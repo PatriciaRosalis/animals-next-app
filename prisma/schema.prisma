@@ -11,34 +11,47 @@ datasource db {
 }
 
 model User {
-  id               Int     @id @default(autoincrement())
-  firstName        String
-  lastName         String
-  email            String  @unique
-  phoneNumber      Int?
-  post             Post[]
-  usernameFacebook String?
+  id        Int    @id @default(autoincrement())
+  firstName String
+  lastName  String
+  post      Post[]
 }
 
 model Post {
-  id                      Int      @id @default(autoincrement())
+  id                      Int         @id @default(autoincrement())
+  foundOrLost             FoundOrLost @default(PERDIDO)
   name                    String
   location                String
-  missingPlace            String
-  time                    DateTime
-  sex                     Sex      @default(DONT)
-  sterilized              Boolean?
-  chip                    Boolean?
+  missingPlace            String?
+  time                    String
+  date                    DateTime    @default(now())
+  sex                     Sex         @default(DONT)
+  sterilized              Options?    @default(DONT)
+  chip                    Options     @default(DONT)
   eyeColor                String?
   breed                   String?
   importantInformation    String?
   importantCharacteristic String?
-  User                    User?    @relation(fields: [userId], references: [id])
+  usernameFacebook        String?
+  email                   String
+  phoneNumber             Int?
+  User                    User?       @relation(fields: [userId], references: [id])
   userId                  Int?
 }
 
 enum Sex {
   FEMALE
   MALE
+  DONT
+}
+
+enum FoundOrLost {
+  PERDIDO
+  ENCONTRADO
+}
+
+enum Options {
+  YES
+  NO
   DONT
 }

@@ -6,14 +6,7 @@ import {
     SunIcon,
     WarningTwoIcon,
 } from '@chakra-ui/icons';
-import {
-    Button,
-    Center,
-    Container,
-    Divider,
-    Flex,
-    Wrap,
-} from '@chakra-ui/react';
+import { Button, Center, Divider, Flex, Wrap } from '@chakra-ui/react';
 import { Post, PrismaClient } from '@prisma/client';
 import type { GetServerSideProps, NextPage } from 'next';
 import Image from 'next/image';
@@ -58,7 +51,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
     const posts = await prisma.post.findMany();
     return {
         props: {
-            posts: posts,
+            posts: JSON.parse(JSON.stringify(posts)),
         },
     };
 };
@@ -78,8 +71,6 @@ const Home: NextPage<Props> = ({ posts }) => {
             }}
         >
             <>
-                {/* <div className={styles.container}>{JSON.stringify(posts)}</div> */}
-
                 <div className='banner'>
                     <Flex
                         style={{
@@ -136,26 +127,24 @@ const Home: NextPage<Props> = ({ posts }) => {
                     </Center>
                 </div>
 
-                <Container style={{ marginTop: '50px' }}>
-                    <Center>
-                        <h1>SOBRE NÓS</h1>
-                    </Center>
+                <Center mt={50}>
+                    <h1>SOBRE NÓS</h1>
+                </Center>
 
-                    <Divider />
+                <Divider mb={10} />
 
-                    <Wrap>
-                        {cardsData.map((card) => {
-                            return (
-                                <CardIcon
-                                    key={card.title}
-                                    icon={card.icon}
-                                    title={card.title}
-                                    description={card.description}
-                                />
-                            );
-                        })}
-                    </Wrap>
-                </Container>
+                <Wrap m={20} p={15}>
+                    {cardsData.map((card) => {
+                        return (
+                            <CardIcon
+                                key={card.title}
+                                icon={card.icon}
+                                title={card.title}
+                                description={card.description}
+                            />
+                        );
+                    })}
+                </Wrap>
             </>
         </div>
     );

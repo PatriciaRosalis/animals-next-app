@@ -17,12 +17,12 @@ type Props = {
     posts: Post[];
 };
 
-const Perdidos: NextPage<Props> = ({ posts }) => {
+const Encontrados: NextPage<Props> = ({ posts }) => {
     return (
         <div>
             {posts.map((animal) => (
                 <>
-                    {animal.foundOrLost == 'PERDIDO' ? (
+                    {animal.foundOrLost == 'ENCONTRADO' ? (
                         <Box
                             style={{
                                 width: '300px',
@@ -57,4 +57,4 @@ const Perdidos: NextPage<Props> = ({ posts }) => {
     );
 };
 
-export default Perdidos;
+export default Encontrados;
