@@ -1,8 +1,6 @@
 import React, { useRef } from 'react';
 import ReactS3Client from 'react-aws-s3-typescript';
-
-const AccessKeyID = 'AKIAXALOBFYPMNUVWHGR';
-const SecretAccessKey = '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';
+import { AccessKeyID, SecretAccessKey } from '../keys';
 
 const UploadImage = () => {
     const fileInput = useRef<HTMLSelectElement>(null);
