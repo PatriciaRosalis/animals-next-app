@@ -21,7 +21,7 @@ export default function Navbar() {
                         src='/logo.svg'
                         alt='logo'
                         width='38'
-                        height='36'
+                        height='35'
                         style={{ cursor: 'pointer' }}
                     />
                 </Link>
@@ -36,7 +36,7 @@ export default function Navbar() {
                 }}
             >
                 <Link href='/perdidos'>Perdidos</Link>
-                <Link href='/'>Encontrados</Link>
+                <Link href='/encontrados'>Encontrados</Link>
                 <Link href='/'>Adoção</Link>
                 <Link href='/'>Associações</Link>
                 <Link href='/'>Pet Sitting</Link>
@@ -48,13 +48,14 @@ export default function Navbar() {
                         background: '#F4C004',
                         height: '30px',
                         width: '100px',
+                        fontSize: '13px',
                         color: 'white',
                         border: 'none',
                         borderRadius: '3px',
                         cursor: 'pointer',
                     }}
                 >
-                    <Link href='/login'> Criar anúncio</Link>
+                    <Link href='/criar-anuncio'> Criar anúncio</Link>
                 </Button>
             </div>
 

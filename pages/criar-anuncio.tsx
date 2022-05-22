@@ -17,6 +17,7 @@ import React from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { useMutation } from 'react-query';
 import { API } from '../API/API';
+import UploadImage from '../components/UploadImage';
 
 export async function getServerSideProps() {
     return {
@@ -26,7 +27,7 @@ export async function getServerSideProps() {
 
 export type IAnimalForm = {
     name: string;
-    telephone: string;
+    phoneNumber: string;
     email: string;
     usernameFacebook: string;
     age: number;
@@ -52,6 +53,7 @@ export default function CreatePost() {
     } = useForm<IAnimalForm>();
 
     const onSubmit = async (data: IAnimalForm) => {
+        console.log(data);
         mutation.mutate(data);
     };
 
@@ -80,6 +82,9 @@ export default function CreatePost() {
                         <Box fontWeight='bold' fontSize='20px' mt={20} mb={5}>
                             Dados do Pet:
                         </Box>
+
+                        {/* <input type='file' /> */}
+                        <UploadImage />
 
                         <FormLabel htmlFor='foundOrLost'>
                             Encontrou ou perdeu um animal?
@@ -234,9 +239,7 @@ export default function CreatePost() {
                         <Textarea
                             placeholder='Ex: Tem medo de gatos e não gosta de ser transportada ao colo.'
                             size='sm'
-                            {...register('importantInformation', {
-                                required: 'This is required',
-                            })}
+                            {...register('importantInformation')}
                         />
                         <FormErrorMessage>
                             {errors.importantInformation &&
@@ -247,9 +250,7 @@ export default function CreatePost() {
                         <Textarea
                             placeholder='Ex: Tem uma coleira com os nossos contactos/morada e tem uma mancha preta na barriga.'
                             size='sm'
-                            {...register('importantCharacteristic', {
-                                required: 'This is required',
-                            })}
+                            {...register('importantCharacteristic')}
                         />
                         <FormErrorMessage>
                             {errors.importantCharacteristic &&
@@ -263,13 +264,13 @@ export default function CreatePost() {
                             Contactos
                         </Box>
 
-                        <FormLabel htmlFor='telephone'>Nº telefone:</FormLabel>
+                        <FormLabel htmlFor='phoneNumber'>
+                            Nº telefone:
+                        </FormLabel>
                         <Input
-                            id='telephone'
+                            id='phoneNumber'
                             type='number'
-                            {...register('telephone', {
-                                required: 'This is required',
-                            })}
+                            {...register('phoneNumber')}
                         />
 
                         <FormLabel htmlFor='email'>Email:</FormLabel>
@@ -287,9 +288,7 @@ export default function CreatePost() {
                         <Input
                             id='usernameFacebook'
                             type='text'
-                            {...register('usernameFacebook', {
-                                required: 'This is required',
-                            })}
+                            {...register('usernameFacebook')}
                         />
 
                         <Button

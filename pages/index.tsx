@@ -60,9 +60,6 @@ type Props = {
 };
 
 const Home: NextPage<Props> = ({ posts }) => {
-    // const [pets, setPets] =
-    //     useState<Prisma.UserUncheckedCreateInput[]>(posts);
-
     return (
         <div
             style={{

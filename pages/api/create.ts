@@ -51,7 +51,9 @@ export default async function handle(
         sex,
         sterilized,
         email,
-        telephone,
+        phoneNumber,
+        usernameFacebook,
+        foundOrLost,
     } = req.body;
 
     const result = await prisma.post.create({
@@ -66,6 +68,9 @@ export default async function handle(
             sex,
             sterilized,
             email,
+            phoneNumber,
+            usernameFacebook,
+            foundOrLost,
         },
     });
     res.json(result);
